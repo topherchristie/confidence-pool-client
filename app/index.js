@@ -5,9 +5,8 @@ var angularTouch = require('angular-touch');
 var momentTimezone = require('moment-timezone');
 var dnd = require('angular-drag-and-drop-lists');
 var moment = require('moment');
-var app = angular.module('app', ["ui.bootstrap"]);
-
-
+var angularDragula = require('angular-dragula');
+var app = angular.module('app', ["ui.bootstrap", angularDragula(angular)]);
 
 var week1 = [
 {'home':'DEN','away':'CAR', 'date':'2016-09-09T00:30Z'},

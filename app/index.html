@@ -5,6 +5,30 @@
 	<link href="bootstrap.min.css" rel=stylesheet>
 	<link href="bootstrap-theme.min.css" rel=stylesheet>
 	<style type="text/css">
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+
+    
 	/**
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
@@ -71,34 +95,20 @@
 </style>
 </head>
 <body ng-app="app">
-	<h1>Confidence Pool v1</h1>
 	<div ng-controller="WeekPickerController" class="simpleDemo">
-	 <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">List {{listName}}</h3>
-                    </div>
-                    <div class="panel-body">
-                    	<ul dnd-list="list">
-    <!-- The dnd-draggable directive makes an element draggable and will
-         transfer the object that was assigned to it. If an element was
-         dragged away, you have to remove it from the original list
-         yourself using the dnd-moved attribute -->
-    <li ng-repeat="item in list"
-        dnd-draggable="item"
-        dnd-moved="list.splice($index, 1)"
-        dnd-effect-allowed="move"
-        dnd-selected="models.selected = item"
-        ng-class="{'selected': models.selected === item}"
-        >
-        {{item.label}}
-    </li>
-</ul>
-                    </div>
+        <div class="panel panel-info"  >
+            <div class="panel-heading">
+                <h3 class="panel-title">Confidence pool v1</h3>
+            </div>
+            <div class="panel-body" dragula='"bag-one"'>
+                <div class="row" ng-repeat="game in games"  dragula-scope="$parent" style="border:1px solid;border-color:blue">
+                    <div class="col-sm-4">{{$index}}</div>
+                    <div class="col-sm-4">{{game.away}}</div>
+                    <div class="col-sm-4">{{game.home}}</div>
                 </div>
             </div>
-	
-	</div>
+        </div>
+    </div>
 	<script src="bundle.js" ></script>
 </body>
 </html>
