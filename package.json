@@ -1,0 +1,21 @@
+{
+  "name": "confidence-pool-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node node_modules/.bin/webpack-dev-server --content-base app"
+  },
+  "author": "Chris Christie, Mike Fallon",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-bootstrap": "^0.12.2",
+    "angular-drag-and-drop-lists": "^1.4.0",
+    "angular-touch": "^1.5.8",
+    "json-loader": "^0.5.4",
+    "moment-timezone": "^0.5.5"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "confidence-pool-client",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Chris Christie",
+    "Mike Fallon"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^2.0.0"
+  }
+}
