@@ -107,9 +107,9 @@
             </div>
             <div class="panel-body" dragula='"bag-one"'>
                 <div class="row" ng-repeat="game in games"  dragula-scope="$parent">
-                    <div class="col-sm-4">{{$index}}</div>
-                    <div class="col-sm-4"><button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs" ng-click="pickWinner(game,'away')">{{game.away}}</button></div>
-                    <div class="col-sm-4"><button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs" ng-click="pickWinner(game,'home')">{{game.home}}</button></div>
+                    <div class="col-xs-4">{{$index}}</div>
+                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs" ng-click="pickWinner(game,'away')">{{game.away}}</button></div>                    
+                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs" ng-click="pickWinner(game,'home')">{{game.home}}</button></div>
                 </div>
             </div>
         </div>
