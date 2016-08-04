@@ -39,9 +39,14 @@ const fs    = require('fs')
 const route = require('koa-route')
 
 app.use(route.get('/', function(ctx) {
-  ctx.type = 'html'
-  var body = fs.readFileSync('views/login.html', 'utf8')
-  ctx.body = body.replace('{csrfToken}', ctx.csrf)
+
+  if (ctx.isAuthenticated()) {
+    ctx.redirect('/app')
+  } else {
+    ctx.type = 'html'
+    var body = fs.readFileSync('views/login.html', 'utf8')
+    ctx.body = body.replace('{csrfToken}', ctx.csrf)
+  }
 }))
 
 app.use(route.post('/custom', function(ctx, next) {
@@ -112,6 +117,7 @@ app.use(function(ctx, next) {
 })
 
 app.use(route.get('/app', function(ctx) {
+  console.log('ctx.user',ctx.state.user);
   ctx.type = 'html'
   ctx.body = fs.createReadStream('views/app.html')
 }))
