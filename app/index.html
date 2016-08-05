@@ -4,7 +4,9 @@
 	<title>Confidence Pool</title>
 	<link href="bootstrap.min.css" rel=stylesheet>
 	<link href="bootstrap-theme.min.css" rel=stylesheet>
+  <link href="styles.css" rel=stylesheet>
 	<style type="text/css">
+  
 .gu-mirror {
   position: fixed !important;
   margin: 0 !important;
@@ -23,7 +25,7 @@
   user-select: none !important;
 }
 .gu-transit {
-  opacity: 0.2;
+  opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }
@@ -93,6 +95,9 @@
     color: #3c763d;
 }
 </style>
+
+
+
 </head>
 <body ng-app="app">
 	<div ng-controller="WeekPickerController" class="simpleDemo">
@@ -101,10 +106,10 @@
                 <h3 class="panel-title">Confidence pool v1</h3>
             </div>
             <div class="panel-body" dragula='"bag-one"'>
-                <div class="row" ng-repeat="game in games"  dragula-scope="$parent" style="border:1px solid;border-color:blue">
-                    <div class="col-sm-4">{{$index}}</div>
-                    <div class="col-sm-4"><button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs" ng-click="pickWinner(game,'away')">{{game.away}}</button></div>
-                    <div class="col-sm-4"><button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs" ng-click="pickWinner(game,'home')">{{game.home}}</button></div>
+                <div class="row" ng-repeat="game in games"  dragula-scope="$parent">
+                    <div class="col-xs-4">{{$index}}</div>
+                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs" ng-click="pickWinner(game,'away')">{{game.away}}</button></div>                    
+                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs" ng-click="pickWinner(game,'home')">{{game.home}}</button></div>
                 </div>
             </div>
         </div>
