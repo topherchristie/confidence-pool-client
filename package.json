@@ -15,6 +15,7 @@
     "angular-bootstrap": "^0.12.2",
     "angular-drag-and-drop-lists": "^1.4.0",
     "angular-dragula": "^1.2.7",
+    "angular-route": "^1.5.8",
     "angular-touch": "^1.5.8",
     "json-loader": "^0.5.4",
     "moment": "^2.14.1",

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+<base href="/">
 	<title>Confidence Pool</title>
 	<link href="bootstrap.min.css" rel=stylesheet>
 	<link href="bootstrap-theme.min.css" rel=stylesheet>
@@ -100,19 +101,8 @@
 
 </head>
 <body ng-app="app">
-	<div ng-controller="WeekPickerController" class="simpleDemo">
-        <div class="panel panel-info"  >
-            <div class="panel-heading">
-                <h3 class="panel-title">Confidence pool v1</h3>
-            </div>
-            <div class="panel-body" dragula='"bag-one"'>
-                <div class="row" ng-repeat="game in games"  dragula-scope="$parent">
-                    <div class="col-xs-4">{{$index}}</div>
-                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs" ng-click="pickWinner(game,'away')">{{game.away}}</button></div>                    
-                    <div class="col-xs-4"><button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs" ng-click="pickWinner(game,'home')">{{game.home}}</button></div>
-                </div>
-            </div>
-        </div>
+	<div ng-controller="MainController" class="simpleDemo">
+       <div ng-view></div>
     </div>
 	<script src="bundle.js" ></script>
 </body>

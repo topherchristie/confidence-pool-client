@@ -6,7 +6,7 @@ var momentTimezone = require('moment-timezone');
 var dnd = require('angular-drag-and-drop-lists');
 var moment = require('moment');
 var angularDragula = require('angular-dragula');
-var app = angular.module('app', ["ui.bootstrap", angularDragula(angular)]);
+var ngRoute = require('angular-route');
 
 var week1 = [
 {'home':'DEN','away':'CAR', 'date':'2016-09-09T00:30Z'},
@@ -79,7 +79,43 @@ var teams = {
 'WAS' : ['Washington', 'Redskins', 'Washington Redskins', 'WSH'] 
 };
 
-app.controller('WeekPickerController',['$scope',function($scope) {
+var app = angular.module('app', ["ui.bootstrap", "ngRoute", angularDragula(angular)]);
+
+app.controller('MainController', function($scope, $route, $routeParams, $location) {
+     $scope.$route = $route;
+     $scope.$location = $location;
+     $scope.$routeParams = $routeParams;
+ })
+
+ .controller('SettingsController', function($scope, $routeParams) {
+     $scope.name = "SettingsController";
+     $scope.params = $routeParams;
+ })
+
+.config(function($routeProvider, $locationProvider) {
+  $routeProvider
+  .when('/pick/:id', {
+    templateUrl: 'pick-add-edit.html',
+    controller: 'PickAddEditController'
+  })
+  .when('/pick', {
+    templateUrl: 'pick-add-edit.html',
+    controller: 'PickAddEditController'
+  })
+  .when('/settings', {
+    templateUrl: 'settings.html',
+    controller: 'SettingsController'
+  })
+  .when('/login', {
+    templateUrl: 'login.html'
+  })
+  .otherwise('/login');
+
+  // configure html5 to get links working on jsfiddle
+  $locationProvider.html5Mode(false);
+});
+
+app.controller('PickAddEditController',['$scope',function($scope) {
 	console.log('init week picker');
 	$scope.niceDate = function(dateStr){
 		return moment(dateStr).tz('America/Chicago').format('h:mm a z');
