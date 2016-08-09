@@ -1,15 +1,133 @@
 
-.panel-body {
-	background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+	font-family: 'Roboto';
+	font-weight: 300;
+	color:#6B6B6B;
 }
-/* --- PICKS --- */
-.panel .ng-scope {
-	margin:0 0 13px;
-	height:42px;
+.panel {
+	background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%);
+	.panel-heading {
+		text-align: center;
+		background:#FFF;
+
+
+	}
+	.panel-body {
+		width: 100%;
+		max-width: 244px;
+		padding:13px 0px 55px;
+		margin:0 auto;
+
+
+	}
+}
+
+
+
+.pick-container {
+	/*height:42px;*/
 	border-radius: 5px;
 	border: 1px solid #1E1E1E;
 	background: #EAEAEA;	
-	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.50);
 	border-radius: 5px;
-
+	transition: all .2s ease-in-out; 
 }
+
+.panel {
+	.ng-scope {
+		@extend .pick-container;
+		margin:0 0 13px;
+		
+	}
+	
+	.gu-transit { /*---DROPZONE---*/
+		@extend .pick-container;
+		background: #CDCDCD;
+		border: 1px solid rgba(0,0,0,0.0);
+		box-shadow: none;
+		transition:none;
+		.matchup,
+		.wager {
+			opacity:0.0;
+		}
+	}
+}
+.gu-mirror { /*---DRAG---*/
+	@extend .pick-container;
+		opacity:1.0;
+		background: #FFF;
+		box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.333);
+		transform: scale(1.05); 
+
+	}
+
+.matchup {
+			padding:2px 0;
+
+			div {
+				width:33.333%;
+				float:left;
+				text-align: center;
+				button {
+					width:44px;
+					height: 44px;
+					border-radius: 44px;
+					font-style: bold;
+					font-size:1.25em;
+					font-weight: 600;
+					padding:0;
+					box-shadow: none;
+					background: none;
+					border:1px solid rgba(0,0,0,0.0);
+					text-shadow:none;
+					&:active, 
+					&:focus {
+						background: #C8C8C8 !important;
+						color:#000 !important;
+
+					}
+					&.btn-primary { /*---SELECTED WINNER---*/
+						background: #C8C8C8;
+						border:1px solid #FFF;
+						color:#000;
+
+
+					}
+				}
+
+			}
+			.game-clock {
+					padding-top:1px;
+					span {
+						line-height: 100%;
+						font-size:14px;
+						display:block;
+					}
+					.date {
+						margin-top:9px;
+					}
+					.game-score {
+						color:#FFFFFF;
+					}
+				}
+		}
+
+.wager {
+			padding-left:0; 
+			span {
+				color:#000;
+				background: #FFF;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+				height: 48px;
+				float:left;
+				display: block;
+				width: 35px;
+				font-size: 18px;
+				padding-top:15px;
+				text-align: center;
+				line-height: 100%;
+			}
+		}	
