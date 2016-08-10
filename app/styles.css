@@ -38,7 +38,7 @@ body {
 
 .gu-mirror {
   /*---DRAG---*/
-  opacity: 1.0;
+  opacity: 1.0 !important;
   background: #FFF;
   box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.333);
   transform: scale(1.05); }
@@ -68,7 +68,10 @@ body {
         /*---SELECTED WINNER---*/
         background: #C8C8C8;
         border: 1px solid #FFF;
-        color: #000; }
+        color: #000;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); }
   .matchup .game-clock {
     padding-top: 1px; }
     .matchup .game-clock span {
@@ -95,5 +98,47 @@ body {
     padding-top: 15px;
     text-align: center;
     line-height: 100%; }
+
+.pole {
+  border: none;
+  position: fixed;
+  width: 10%;
+  min-width: 50px;
+  height: 80%;
+  margin-top: 28px;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=0 );
+  /* IE6-9 */
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, rgba 100%); }
+  .pole header {
+    position: relative;
+    top: -2em; }
+  .pole span {
+    width: 100%;
+    height: 6.25%;
+    display: block;
+    vertical-align: middle;
+    float: none;
+    font-size: 1.125em;
+    font-weight: 300;
+    text-align: center;
+    color: #989898; }
+    .pole span.won {
+      color: #1CAC20; }
+    .pole span.lost {
+      color: #D0021B; }
+    .pole span.during {
+      color: #000; }
+    .pole span.zoom {
+      color: #000;
+      font-size: 1.333em;
+      font-weight: 600;
+      top: -.104em;
+      position: relative; }
 
 /*# sourceMappingURL=styles.css.map */

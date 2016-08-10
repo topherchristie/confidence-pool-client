@@ -1,5 +1,59 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+$green:#1CAC20;
+$red:#D0021B;
+$darkgray:#989898;
+
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+
+      -webkit-box-shadow:$top $left $blur $color #{$inset};
+      -moz-box-shadow:$top $left $blur $color #{$inset};
+      box-shadow:$top $left $blur $color #{$inset};
+    }
+
+@mixin respond-to($media) {
+    /* Landscape phones and down */
+    @if $media == phone {
+        @media (max-width: 480px) { @content; }
+    }
+    /* Landscape phone to portrait tablet */
+    @else if $media == large-phone {
+        @media (max-width: 544px) {@content; }
+    }
+    
+    /* Landscape phone to portrait tablet */
+    @else if $media == tablet-portrait {
+        @media (max-width: 768px) {@content; }
+    }
+    /* Portrait tablet to landscape and desktop */
+    @else if $media == tablet-landscape-desktop {
+        @media (min-width: 769px) and (max-width: 991px) { @content; }
+    }
+    /* Large desktop */
+    @else if $media == large-desktop {
+        @media (min-width: 1200px) { @content; }
+    }
+    // Non-Retina
+    @else if $media == non-retina {
+        @media screen and (-webkit-max-device-pixel-ratio: 1) { @content; }
+    }
+    // Retina Only
+    @else if $media == retina {
+        @media screen and (-webkit-min-device-pixel-ratio: 2) { @content; }
+    }
+    // Specific max width
+    @else {
+        @media only screen and (max-width: #{$media}px) { @content; }
+    }
+ }
+
+
+
+
+
+
 body {
 	font-family: 'Roboto';
 	font-weight: 300;
@@ -56,7 +110,7 @@ body {
 }
 .gu-mirror { /*---DRAG---*/
 	@extend .pick-container;
-		opacity:1.0;
+		opacity:1.0 !important;
 		background: #FFF;
 		box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.333);
 		transform: scale(1.05); 
@@ -92,6 +146,7 @@ body {
 						background: #C8C8C8;
 						border:1px solid #FFF;
 						color:#000;
+						@include box-shadow(inset, 0, 1px, 2px, rgba(0, 0, 0, 0.5));
 
 
 					}
@@ -131,3 +186,48 @@ body {
 				line-height: 100%;
 			}
 		}	
+
+.pole {
+	border:none;
+	position:fixed;
+	width:10%;
+	min-width:50px;
+	height:80%;
+	margin-top:28px;
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */background-image: linear-gradient(-180deg, rgba(255,255,255,0.0) 0%, rgba 100%);
+	header {
+		position: relative;
+		top:-2em;
+	}
+	span {
+		width: 100%;
+		height:100 / 16 * 1%;
+		display: block;
+		vertical-align: middle;
+	    float: none;
+	    font-size: 1.125em;
+	    font-weight: 300;
+	    text-align: center;
+	    color:$darkgray;
+	    &.won {
+	    	color: $green;
+	    }
+	    &.lost {
+	    	color:$red;
+	    }
+	    &.during {
+	    	color:#000;
+	    }
+	    &.zoom {
+	    	color:#000;
+	    	font-size: 1.333em;
+	    	font-weight: 600;
+	    	top:-.104em;
+	    	position:relative;
+
+	    }
+	}
+}
