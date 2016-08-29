@@ -1,6 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
-
+const serve = require('koa-serve')
 // trust proxy
 app.proxy = true
 
@@ -38,10 +38,12 @@ app.use(passport.session())
 const fs    = require('fs')
 const route = require('koa-route')
 
+app.use(serve('public'))
+
 app.use(route.get('/', function(ctx) {
 
   if (ctx.isAuthenticated()) {
-    ctx.redirect('/app')
+    ctx.redirect('/client')
   } else {
     ctx.type = 'html'
     var body = fs.readFileSync('views/login.html', 'utf8')
@@ -64,7 +66,7 @@ app.use(route.post('/custom', function(ctx, next) {
 // POST /login
 app.use(route.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/app',
+    successRedirect: '/client',
     failureRedirect: '/'
   })
 ))
@@ -80,7 +82,7 @@ app.use(route.get('/auth/facebook',
 
 app.use(route.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: '/app',
+    successRedirect: '/client',
     failureRedirect: '/'
   })
 ))
@@ -91,7 +93,7 @@ app.use(route.get('/auth/twitter',
 
 app.use(route.get('/auth/twitter/callback',
   passport.authenticate('twitter', {
-    successRedirect: '/app',
+    successRedirect: '/client',
     failureRedirect: '/'
   })
 ))
@@ -102,9 +104,14 @@ app.use(route.get('/auth/google',
 
 app.use(route.get('/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: '/app',
+    successRedirect: '/client',
     failureRedirect: '/'
   })
+))
+
+app.use(route.get('/api/me', function(ctx,next) {
+  ctx.body = ctx.state.user
+}
 ))
 
 // Require authentication for now
@@ -116,11 +123,59 @@ app.use(function(ctx, next) {
   }
 })
 
-app.use(route.get('/app', function(ctx) {
-  console.log('ctx.user',ctx.state.user);
+app.use(route.get('/client', function(ctx) {
   ctx.type = 'html'
-  ctx.body = fs.createReadStream('views/app.html')
+  ctx.body = fs.createReadStream('public/index.html')
+}));
+
+app.use(route.get('/api/team', function(ctx){
+  var teams = {
+'ARI' : [ 'Arizona', 'Cardinals', 'Arizona Cardinals'],
+'ATL' : ['Atlanta', 'Falcons', 'Atlanta Falcons'],
+'BAL' : ['Baltimore', 'Ravens', 'Baltimore Ravens'],
+'BUF' : ['Buffalo', 'Bills', 'Buffalo Bills'],
+'CAR' : ['Carolina', 'Panthers', 'Carolina Panthers'],
+'CHI' : ['Chicago', 'Bears', 'Chicago Bears'],
+'CIN' : ['Cincinnati', 'Bengals', 'Cincinnati Bengals'],
+'CLE' : ['Cleveland', 'Browns', 'Cleveland Browns'],
+'DAL' : ['Dallas', 'Cowboys', 'Dallas Cowboys'],
+'DEN' : ['Denver', 'Broncos', 'Denver Broncos'],
+'DET' : ['Detroit', 'Lions', 'Detroit Lions'],
+'GB' : ['Green Bay', 'Packers', 'Green Bay Packers', 'G.B.', 'GNB'],
+'HOU' : ['Houston', 'Texans', 'Houston Texans'],
+'IND' : ['Indianapolis', 'Colts', 'Indianapolis Colts'],
+'JAC' : ['Jacksonville', 'Jaguars', 'Jacksonville Jaguars', 'JAX'],
+'KC' : ['Kansas City', 'Chiefs', 'Kansas City Chiefs', 'K.C.', 'KAN'],
+'MIA' : ['Miami', 'Dolphins', 'Miami Dolphins'],
+'MIN' : ['Minnesota', 'Vikings', 'Minnesota Vikings'],
+'NE' : ['New England', 'Patriots', 'New England Patriots', 'N.E.', 'NWE'],
+'NO' : ['New Orleans', 'Saints', 'New Orleans Saints', 'N.O.', 'NOR'],
+'NYG' : ['Giants', 'New York Giants', 'N.Y.G.'],
+'NYJ' : ['Jets', 'New York Jets', 'N.Y.J.'],
+'OAK' : ['Oakland', 'Raiders', 'Oakland Raiders'],
+'PHI' : ['Philadelphia', 'Eagles', 'Philadelphia Eagles'],
+'PIT' : ['Pittsburgh', 'Steelers', 'Pittsburgh Steelers'],
+'SD' : ['San Diego', 'Chargers', 'San Diego Chargers', 'S.D.', 'SDG'],
+'SEA' : ['Seattle', 'Seahawks', 'Seattle Seahawks'],
+'SF' : ['San Francisco', '49ers', 'San Francisco 49ers', 'S.F.', 'SFO'],
+'STL' : ['St. Louis', 'Rams', 'St. Louis Rams', 'S.T.L.'],
+'TB' : ['Tampa Bay', 'Buccaneers', 'Tampa Bay Buccaneers', 'T.B.', 'TAM'],
+'TEN' : ['Tennessee', 'Titans', 'Tennessee Titans'],
+'WAS' : ['Washington', 'Redskins', 'Washington Redskins', 'WSH'] 
+};
+  ctx.body = teams
 }))
+
+// var send = require('koa-send');
+//  app.use(function *(){
+//    console.log('index.html', __dirname + '/client');
+//    yield send(this,'index.html', { root: __dirname + '/client/' });
+//  });
+// app.use(async function (ctx, next){
+//   if ('/' == ctx.path) return ctx.body = 'Try GET /package.json';
+//   await send(ctx, 'index.html', {root: __dirname + '/public/'});
+// })
+
 
 // start server
 const port = process.env.PORT || 3333

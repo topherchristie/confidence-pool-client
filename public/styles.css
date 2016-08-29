@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+  font-family: 'Roboto';
+  font-weight: 300;
+  color: #6B6B6B; }
+
+.panel {
+  background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%); }
+  .panel .panel-heading {
+    text-align: center;
+    background: #FFF; }
+  .panel .panel-body {
+    width: 100%;
+    max-width: 244px;
+    padding: 13px 0px 55px;
+    margin: 0 auto; }
+
+.pick-container, .panel .ng-scope, .panel .gu-transit, .gu-mirror {
+  /*height:42px;*/
+  border-radius: 5px;
+  border: 1px solid #1E1E1E;
+  background: #EAEAEA;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transition: all .2s ease-in-out; }
+
+.panel .ng-scope {
+  margin: 0 0 13px; }
+.panel .gu-transit {
+  /*---DROPZONE---*/
+  background: #CDCDCD;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: none; }
+  .panel .gu-transit .matchup,
+  .panel .gu-transit .wager {
+    opacity: 0.0; }
+
+.gu-mirror {
+  /*---DRAG---*/
+  opacity: 1.0 !important;
+  background: #FFF;
+  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.333);
+  transform: scale(1.05); }
+
+.matchup {
+  padding: 2px 0; }
+  .matchup div {
+    width: 33.333%;
+    float: left;
+    text-align: center; }
+    .matchup div button {
+      width: 44px;
+      height: 44px;
+      border-radius: 44px;
+      font-style: bold;
+      font-size: 1.25em;
+      font-weight: 600;
+      padding: 0;
+      box-shadow: none;
+      background: none;
+      border: 1px solid transparent;
+      text-shadow: none; }
+      .matchup div button:active, .matchup div button:focus {
+        background: #C8C8C8 !important;
+        color: #000 !important; }
+      .matchup div button.btn-primary {
+        /*---SELECTED WINNER---*/
+        background: #C8C8C8;
+        border: 1px solid #FFF;
+        color: #000;
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); }
+  .matchup .game-clock {
+    padding-top: 1px; }
+    .matchup .game-clock span {
+      line-height: 100%;
+      font-size: 14px;
+      display: block; }
+    .matchup .game-clock .date {
+      margin-top: 8px; }
+    .matchup .game-clock .game-score {
+      color: #FFFFFF; }
+
+.wager {
+  padding-left: 0; }
+  .wager span {
+    color: #000;
+    background: #FFF;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 48px;
+    float: left;
+    display: block;
+    width: 35px;
+    font-size: 18px;
+    padding-top: 15px;
+    text-align: center;
+    line-height: 100%; }
+
+.pole {
+  border: none;
+  position: fixed;
+  width: 10%;
+  min-width: 50px;
+  height: 80%;
+  margin-top: 28px;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=0 );
+  /* IE6-9 */
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, rgba 100%); }
+  .pole header {
+    position: relative;
+    top: -2em; }
+  .pole span {
+    width: 100%;
+    height: 6.25%;
+    display: block;
+    vertical-align: middle;
+    float: none;
+    font-size: 1.125em;
+    font-weight: 300;
+    text-align: center;
+    color: #989898; }
+    .pole span.won {
+      color: #1CAC20; }
+    .pole span.lost {
+      color: #D0021B; }
+    .pole span.during {
+      color: #000; }
+    .pole span.zoom {
+      color: #000;
+      font-size: 1.333em;
+      font-weight: 600;
+      top: -.104em;
+      position: relative; }
+
+/*# sourceMappingURL=styles.css.map */
