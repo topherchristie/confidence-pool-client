@@ -1,15 +1,3 @@
-const angular = require('angular');
-var angularBootstrap = require('angular-bootstrap');
-var angularAnimate = require('angular-animate');
-var angularTouch = require('angular-touch');
-var momentTimezone = require('moment-timezone');
-var dnd = require('angular-drag-and-drop-lists');
-const moment = require('moment');
-const angularDragula = require('angular-dragula');
-var ngRoute = require('angular-route');
-
-
-
 var teams = {
 'ARI' : [ 'Arizona', 'Cardinals', 'Arizona Cardinals'],
 'ATL' : ['Atlanta', 'Falcons', 'Atlanta Falcons'],
@@ -44,36 +32,3 @@ var teams = {
 'TEN' : ['Tennessee', 'Titans', 'Tennessee Titans'],
 'WAS' : ['Washington', 'Redskins', 'Washington Redskins', 'WSH'] 
 };
-
-var app = angular.module('app', ["ui.bootstrap", "ngRoute", angularDragula(angular)]);
-
-//require('./user-service');
-
-import routing from './app.routing';
-import mainController from './main-controller';
-import pickAddEditController from './pick-add-edit-controller';
-app
-  .config(routing)
-  .controller('MainController', mainController)
-  .controller('PickAddEditController', pickAddEditController)
-;
-//import User from './user-service';
-
-// app.controller('MainController', ['$scope', '$route', '$routeParams', '$location', User, 
-//   function($scope, $route, $routeParams, $location, User) {
-//      $scope.$route = $route;
-//      $scope.$location = $location;
-//      $scope.$routeParams = $routeParams;
-
-//   //   User.me().then(function(user){
-//     //  console.log('me', user);
-//      //});
-//  }]);
-
-// app.controller('SettingsController', function($scope, $routeParams) {
-//      $scope.name = "SettingsController";
-//      $scope.params = $routeParams;
-//  })
-
-
-
