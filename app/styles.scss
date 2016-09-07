@@ -61,12 +61,21 @@ body {
 }
 .panel {
 	background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%);
+	padding-top:40px;
 	.panel-heading {
 		text-align: center;
 		background:#FFF;
-
+		position:fixed;
+		width:100%;
+		z-index: 99;
+		height:40px;
+		top:0;
+		.panel-title {
+			display: inline;
+		}
 
 	}
+
 	.panel-body {
 		width: 100%;
 		max-width: 244px;
