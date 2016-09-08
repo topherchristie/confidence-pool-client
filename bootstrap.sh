@@ -52,7 +52,7 @@ sudo apt-get install -y mongodb-org
 
 
 # Note the new setup script name for Node.js 
-curl -sL https://deb.nodesource.com/setup_5.x | sudo bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 # Then install with:
 sudo apt-get install -y nodejs
 

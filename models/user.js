@@ -10,7 +10,9 @@ const userSchema = {
   emailUpdates: {type:Boolean, default:true},
   facebook_id: String,
   twitter_id: String,
-  google_id: String
+  google_id: String,
+  updatedBy: String,
+  updatedDate: Date
 }
 
 module.exports = mongoose.model('User', userSchema)

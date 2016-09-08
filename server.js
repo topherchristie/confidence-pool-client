@@ -6,6 +6,7 @@ app.proxy = true;
 
 // MongoDB
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 console.log('connecting to MongoDB...');
 mongoose.connect(process.env.MONGODB_URI || 'localhost');
 
@@ -124,27 +125,41 @@ app.use(route.get('/api/me', function(ctx,next) {
   ctx.body = ctx.state.user;
 }));
 var _ = require('lodash');
-app.use(route.post('/api/user', function(ctx,next) {
-    var UserDao = require('./models/user');
-    var data = ctx.request.body;
-    console.log('updating user on server', data);
-    // UserDao.update({'_id':mongoose.ObjectId(data._id)}, data, function(err, r) {
-    //   console.log('user.updated.data', data, err, r);
-    //   ctx.body = r;
-    // });
-    var user = yield UserDao.findOne({_id: mongoose.Types.ObjectId(data._id)});
-    if (!user) {
-      console.log('error saving user', err);
-      ctx.status = 500
-    } else {
-      user = _.extend(user, data);
-      user.updatedBy = ctx.state.user.username;
-      user.updatedDate = new Date();
-      var res = yield user.save();
-      ctx.body = user;
-      console.log('sent ctx.body', user);
-    }
-}));
+function *saveUser(ctx, next){
+  var co = require('co');
+  var UserDao = require('./models/user');
+  var data = ctx.request.body;
+  console.log('updating user on server', data);
+  data.updatedBy = ctx.state.user.username;
+  data.updatedDate = new Date();
+  var res = yield UserDao.update({'_id':mongoose.Types.ObjectId(data._id)}, data);
+  console.log('res',res);
+  ctx.data = data;
+//     co(function *(){
+//       var res = yield UserDao.update({'_id':mongoose.Types.ObjectId(data._id)}, data);
+//       console.log('res', res);
+      
+//     }).then(function (value) {
+//   console.log('Then?',value);
+//   ctx.status = 204;
+// }, function (err) {
+//   console.error('error',err, err.stack);
+//   ctx.status = 500;
+// });
+//     // var user = yield UserDao.findOne({_id: mongoose.Types.ObjectId(data._id)});
+    // if (!user) {
+    //   console.log('error saving user', err);
+    //   ctx.status = 500
+    // } else {
+    //   user = _.extend(user, data);
+    //   user.updatedBy = ctx.state.user.username;
+    //   user.updatedDate = new Date();
+    //   var res = yield user.save();
+    //   ctx.body = user;
+    //   console.log('sent ctx.body', user);
+    // }
+}
+app.use(route.post('/api/user', saveUser));
 
 
 // app.use(route.get('/client', function(ctx) {
@@ -194,17 +209,6 @@ app.use(route.get('/api/team', function(ctx){
 };
   ctx.body = teams;
 }));
-
-// var send = require('koa-send');
-//  app.use(function *(){
-//    console.log('index.html', __dirname + '/client');
-//    yield send(this,'index.html', { root: __dirname + '/client/' });
-//  });
-// app.use(async function (ctx, next){
-//   if ('/' == ctx.path) return ctx.body = 'Try GET /package.json';
-//   await send(ctx, 'index.html', {root: __dirname + '/public/'});
-// })
-
 
 // start server
 const port = process.env.PORT || 3333;
