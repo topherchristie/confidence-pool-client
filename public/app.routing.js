@@ -16,10 +16,10 @@ function routing($routeProvider, $locationProvider) {
     controller: 'SettingsController',
     controllerAs: 'vm'
   })
-  // .when('/dashboard', {
-  //   templateUrl: '/public/views/dashboard.html',
-  //  // controller: 'DashboardController'
-  // })
+  .when('/dashboard', {
+    templateUrl: '/public/views/dashboard.html',
+   // controller: 'DashboardController'
+  })
   .otherwise('/settings');
 
   // configure html5 to get links working on jsfiddle

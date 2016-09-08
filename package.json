@@ -13,7 +13,8 @@
   "scripts": {
     "serve": "node server",
     "build:js": "webpack",
-    "start": "npm run build:js && npm run serve"
+    "build:server":"babel server.es6.js -o server.js",
+    "start": "npm run build:server && npm run build:js && npm run serve"
   },
   "homepage": "https://github.com/rkusa/koa-passport-example",
   "dependencies": {

@@ -65,6 +65,122 @@ app.use(route.get('/users', async (ctx, next) => {
     ctx.body = users;
 }));
 
+// POST /login
+app.use(route.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/client',
+    failureRedirect: '/'
+  })
+));
+
+app.use(route.get('/logout', function(ctx) {
+  ctx.logout();
+  ctx.redirect('/');
+}));
+
+app.use(route.get('/auth/facebook',
+  passport.authenticate('facebook')
+));
+
+app.use(route.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/client',
+    failureRedirect: '/'
+  })
+));
+
+app.use(route.get('/auth/twitter',
+  passport.authenticate('twitter')
+));
+
+app.use(route.get('/auth/twitter/callback',
+  passport.authenticate('twitter', {
+    successRedirect: '/client',
+    failureRedirect: '/'
+  })
+));
+
+app.use(route.get('/auth/google',
+  passport.authenticate('google')
+));
+
+app.use(route.get('/auth/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/client',
+    failureRedirect: '/'
+  })
+));
+
+// Require authentication for now
+app.use(function(ctx, next) {
+  if (ctx.isAuthenticated()) {
+    return next();
+  } else {
+    ctx.redirect('/');
+  }
+});
+app.use(route.get('/api/me', function(ctx,next) {
+  ctx.body = ctx.state.user;
+}));
+
+// var _ = require('lodash');
+// function *saveUser(ctx, next){
+//   var co = require('co');
+//   var UserDao = require('./models/user');
+//   var data = ctx.request.body;
+//   console.log('updating user on server', data);
+//   data.updatedBy = ctx.state.user.username;
+//   data.updatedDate = new Date();
+//   var res = yield UserDao.update({'_id':mongoose.Types.ObjectId(data._id)}, data);
+//   console.log('res',res);
+//   ctx.data = data;
+//     co(function *(){
+//       var res = yield UserDao.update({'_id':mongoose.Types.ObjectId(data._id)}, data);
+//       console.log('res', res);
+      
+//     }).then(function (value) {
+//   console.log('Then?',value);
+//   ctx.status = 204;
+// }, function (err) {
+//   console.error('error',err, err.stack);
+//   ctx.status = 500;
+// });
+//     // var user = yield UserDao.findOne({_id: mongoose.Types.ObjectId(data._id)});
+    // if (!user) {
+    //   console.log('error saving user', err);
+    //   ctx.status = 500
+    // } else {
+    //   user = _.extend(user, data);
+    //   user.updatedBy = ctx.state.user.username;
+    //   user.updatedDate = new Date();
+    //   var res = yield user.save();
+    //   ctx.body = user;
+    //   console.log('sent ctx.body', user);
+    // }
+var _ = require('lodash');
+app.use(route.post('/api/user', async (ctx, next) => { 
+	var UserDao = require('./models/user');
+	var data = ctx.request.body;
+	console.log('updating user on server', data);
+	data.updatedBy = ctx.state.user.username;
+	data.updatedDate = new Date();
+
+	var res = await UserDao.update({'_id':mongoose.Types.ObjectId(data._id)}, data);
+	console.log('res',res);
+	ctx.body = data;
+	
+}));
+
+
+// app.use(route.get('/client', function(ctx) {
+//   ctx.cookies.set('xsrf-token', ctx.csrf);
+// });
+var moment = require('moment');
+app.use(route.get('/client', function(ctx) {
+  ctx.cookies.set('xsrf-token', ctx.csrf, {httpOnly:false, expires: moment().add(1, 'hour').toDate()});
+  ctx.type = 'html';
+  ctx.body = fs.createReadStream('public/views/index.html');
+}));
 
 // start server
 const port = process.env.PORT || 3333;

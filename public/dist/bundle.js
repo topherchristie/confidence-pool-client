@@ -34179,10 +34179,10 @@
 	    controller: 'SettingsController',
 	    controllerAs: 'vm'
 	  })
-	  // .when('/dashboard', {
-	  //   templateUrl: '/public/views/dashboard.html',
-	  //  // controller: 'DashboardController'
-	  // })
+	  .when('/dashboard', {
+	    templateUrl: '/public/views/dashboard.html',
+	   // controller: 'DashboardController'
+	  })
 	  .otherwise('/settings');
 
 	  // configure html5 to get links working on jsfiddle
@@ -34234,6 +34234,7 @@
 	angular.module('app')
 		.controller('MainController', __webpack_require__(13))
 		.controller('SettingsController', __webpack_require__(14))
+		.controller('DashboardController', __webpack_require__(15))
 	;
 
 /***/ },
@@ -34259,8 +34260,8 @@
 
 	'use strict';
 
-	SettingsController.$inject = ['$scope','$cookies','User'];
-	function SettingsController($scope,$cookies,User) {
+	SettingsController.$inject = ['$scope','$cookies','$location','User'];
+	function SettingsController($scope,$cookies,$location,User) {
 		console.log('$cookies',$cookies['xsrf-token']);
 		this.title = "Settings for Me";
 	    this.me = {'username':'Chris Christie'};
@@ -34278,12 +34279,20 @@
 	    this.save = function(){
 	    	console.log('saving settings');
 	    	_this.me.$save();
+	    	$location.path('/dashboard');
 	    }
 	    this.cancel = function(){ 
 	    	console.log('cancel');
+	    	$location.path('/dashboard');
 	    }
 	}
 	module.exports = SettingsController;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	
 
 /***/ }
 /******/ ]);
