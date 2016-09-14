@@ -66,7 +66,7 @@ passport.use(new GoogleStrategy({
           done(err);
         } else {
           if(result === null) {
-            newUser = new User({
+            var newUser = new User({
               username: profile.emails[0].value,
               email: profile.emails[0].value,
               displayName: profile.displayName,
