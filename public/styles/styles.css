@@ -26,6 +26,7 @@ body {
 
 .panel .ng-scope {
   margin: 0 0 13px; }
+
 .panel .gu-transit {
   /*---DROPZONE---*/
   background: #CDCDCD;
@@ -76,7 +77,7 @@ body {
     padding-top: 1px; }
     .matchup .game-clock span {
       line-height: 100%;
-      font-size: 14px;
+      font-size: 12px;
       display: block; }
     .matchup .game-clock .date {
       margin-top: 8px; }
@@ -140,5 +141,3 @@ body {
       font-weight: 600;
       top: -.104em;
       position: relative; }
-
-/*# sourceMappingURL=styles.css.map */

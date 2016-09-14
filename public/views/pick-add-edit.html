@@ -26,8 +26,8 @@
         </div>
 
 
-        <div class="panel-body" dragula='"bag-one"' dragula-model="games">
-<!--   -->
+        <div class="panel-body" >
+<!--   -->  <div dragula='"bag-one"' dragula-model="games">
             <div class="row" ng-repeat="game in games"  dragula-scope="$parent" >
                 <div class="col-xs-2 wager"><span>{{$index+1}}</span></div>
                 <div class="col-xs-8 matchup">
@@ -36,8 +36,8 @@
                     </div> 
                     <div class="game-clock">
                         <!--not started-->
-                            <span class="date">9/8</span>
-                            <span class="time">12:00</span>
+                            <span class="date">{{picker.niceDate(game.date)}}</span>
+                            <span class="time">{{picker.niceTime(game.date)}}</span>
                         <!-- /not started-->
                         <!--in progress-->
                             <!--span class="quarter">4Q</span>
@@ -57,8 +57,11 @@
                 </div>
                 <div class="col-xs-2">{{$index}}</div>
             </div>
+            </div>
             <div class="panel-footer">
                 <button class="btn btn-primary" ng-click="picker.save()">Save</button>
+            </div>
         </div>
+        
     </div>
 </div>

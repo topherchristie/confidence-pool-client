@@ -122,6 +122,14 @@ app.use(function(ctx, next) {
 app.use(route.get('/api/me', function(ctx,next) {
   ctx.body = ctx.state.user;
 }));
+// app.use(route.get('/newUserCheck'), (ctx,next) => {
+//   if(cts.state.user.userSignedUp){
+//     ctx.redirect('/client');
+//   } else {
+//     console.log('redirecting to settings');
+//     ctx.redirect('/client#/settings');
+//   }
+// });
 
 // var _ = require('lodash');
 // function *saveUser(ctx, next){
@@ -171,6 +179,26 @@ app.use(route.post('/api/user', async (ctx, next) => {
 	
 }));
 
+app.use(route.get('/api/game/current', async (ctx, next) => {
+  ctx.body = [
+    {'home':'DEN','away':'CAR', 'date':'2016-09-09T00:30Z'},
+    {'home':'JAX','away':'GB', 'date':'2016-09-11T17:00Z'},
+    {'home':'BAL','away':'BUF', 'date':'2016-09-11T17:00Z'},
+    {'home':'HOU','away':'CHI', 'date':'2016-09-11T17:00Z'},
+    {'home':'PHI','away':'CLE', 'date':'2016-09-11T17:00Z'},
+    {'home':'ATL','away':'TB', 'date':'2016-09-11T17:00Z'},
+    {'home':'TEN','away':'MIN', 'date':'2016-09-11T17:00Z'},
+    {'home':'NYJ','away':'CIN', 'date':'2016-09-11T17:00Z'},
+    {'home':'NO','away':'OAK', 'date':'2016-09-11T17:00Z'},
+    {'home':'KC','away':'SD', 'date':'2016-09-11T17:00Z'},
+    {'home':'SEA','away':'MIA', 'date':'2016-09-11T20:05Z'},
+    {'home':'IND','away':'DET', 'date':'2016-09-11T20:25Z'},
+    {'home':'DAL','away':'NYG', 'date':'2016-09-11T20:25Z'},
+    {'home':'ARI','away':'NE', 'date':'2016-09-12T00:30Z'},
+    {'home':'WSH','away':'PIT', 'date':'2016-09-12T23:10Z'},
+    {'home':'SF','away':'LA', 'date':'2016-09-13T02:20Z'}
+  ];
+}));
 
 // app.use(route.get('/client', function(ctx) {
 //   ctx.cookies.set('xsrf-token', ctx.csrf);

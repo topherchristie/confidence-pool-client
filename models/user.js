@@ -12,7 +12,8 @@ const userSchema = {
   twitter_id: String,
   google_id: String,
   updatedBy: String,
-  updatedDate: Date
+  updatedDate: Date,
+  userSignedUp: {type:Boolean, default:false}
 }
 
 module.exports = mongoose.model('User', userSchema)

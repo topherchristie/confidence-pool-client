@@ -1,0 +1,16 @@
+<h1>Pools</h1>
+<ul>
+	<li ng-if="!vm.myPools || vm.myPools.length == 0">You have not joined any pools</li>
+	<li ng-repeat="pool in vm.myPools">
+	<a ng-href="#/pool/{{pool._id}}">{{pool.name}}</a> <input ng-click="vm.leavePool(pool)" type="button" style="btn btn-xs btn-default" value="Leave" />
+	</li>
+</ul>
+
+<div>
+<h1>Join Pool <a style="btn btn-xs btn-default" ng-click="vm.createPool()">Create Pool</a></button></h1>
+<ul>
+	<li ng-if="!vm.allPools || vm.allPools.length == 0">No Pools to Join</li>
+	<li ng-repeat="pool in vm.allPools">
+	<a ng-href="#/pool/{{pool._id}}">{{pool.name}}</a> <input type="button" style="btn btn-xs btn-default" value="Join" ng-click="vm.joinPool(pool)" />
+	</li>
+</ul>

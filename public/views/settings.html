@@ -1,16 +1,16 @@
-<h2>user Settings last updated on {{vm.me.updatedDate}}</h2>
+<h2>user Settings last updated on {{vm.user.updatedDate}}</h2>
 <form name="settingsForm">
 <div>
-User Name : <input type="text" maxlength="100" ng-model="vm.me.username" require="true"/>
+User Name : <input type="text" maxlength="100" ng-model="vm.user.username" require="true"/>
 </div>
 <div>
-Display Name : <input type="text" maxlength="100" ng-model="vm.me.displayName" require="true"/>
+Display Name : <input type="text" maxlength="100" ng-model="vm.user.displayName" require="true"/>
 </div>
 <div>
-Email : <input type="text" maxlength="100" ng-model="vm.me.email" require="true"/>
+Email : <input type="text" maxlength="100" ng-model="vm.user.email" require="true"/>
 </div>
 <div>
-Email Updates : <input type="checkbox" ng-model="vm.me.emailUpdates" />
+Email Updates : <input type="checkbox" ng-model="vm.user.emailUpdates" />
 </div>
 <div>
 <input type="button" class="btn btn-xs btn-primary" name="save" value="Save" ng-click="vm.save()" />

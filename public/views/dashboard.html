@@ -1,1 +1,56 @@
-dash here
+<div class="simpleDemo">
+    <div class="panel panel-info"  >
+        <div class="panel-heading">
+            <h3 class="panel-title">{{vm.title}} <a href="#pick/{{vm._id}}" class='btn btn-primary btn-xs'>Edit</a></h3>
+        </div>
+        <div class="pole">            
+            <span class="won">16</span>
+            <span class="lost">15</span>
+            <span class="during">14</span>
+            <span class="zoom">13</span>
+            <span>12</span>
+            <span>11</span>
+            <span>10</span>
+            <span>9</span>
+            <span>8</span>
+            <span>7</span>
+            <span>6</span>
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+        </div>
+        <div class="panel-body">
+            <div class="row" ng-repeat="game in vm.games" >
+                <div class="col-xs-2 wager"><span>{{$index+1}}</span></div>
+                <div class="col-xs-8 matchup">
+                    <div class="away-team">
+                        <button ng-class="{'btn-primary':game.winner == 'away', 'btn-default':game.winner != 'away'}" class="btn btn-xs">{{game.away}}</button>      
+                    </div> 
+                    <div class="game-clock">
+                        <!--not started-->
+                            <span class="date">9/8</span>
+                            <span class="time">12:00</span>
+                        <!-- /not started-->
+                        <!--in progress-->
+                            <!--span class="quarter">4Q</span>
+                            <span class="clock">5:13</span>
+                            <span class="game-score">10-27</span-->
+                        <!-- /in progress-->
+                        <!--final-->
+                            <!--span class="quarter">FINAL</span>
+                            <span class="clock">&nbsp;</span>
+                            <span class="game-score">13-27</span-->
+                        <!-- /end final-->
+
+                    </div>
+                    <div class="home-team">
+                        <button ng-class="{'btn-primary':game.winner == 'home', 'btn-default':game.winner != 'home'}" class="btn btn-xs">{{game.home}}</button>
+                    </div>
+                </div>
+                <div class="col-xs-2">{{$index}}</div>
+            </div>
+        </div>
+    </div>
+</div>

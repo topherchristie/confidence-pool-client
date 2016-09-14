@@ -1,63 +1,51 @@
+var moment = require('moment');
 
-export default class PickAddEditController {
-  constructor($scope) {
-  	this.niceDate = function(dateStr){
- 		 return moment(dateStr).tz('America/Chicago').format('h:mm a z');
-    }
- 	} 
- 	
-  $scope.$on('bag-one.drop-model', function (e, el) {
-    console.log('drop-model', e, el);
-  });
+class PickAddEditController {
+  constructor($scope, Game) {
+    this._scope = $scope;
+    $scope.$on('bag-one.drop-model', function (e, el) {
+      console.log('drop-model', e, el);
+    });
 
-  $scope.$on('bag-one.drop', function (e, el) {
-    console.log('drop',e,el);
-  });
-  $scope.games = week1;
+    $scope.$on('bag-one.drop', function (e, el) {
+      console.log('drop',e,el);
+    });
+    
+    var _this = this;
+    Game.current({'userId':$scope.me._id},function(games){
+        console.log('games',games);
+        $scope.games = games;
+        _this.title = 'week 1';
+    }, function(err){
+        alert('error x001: cannot get logged in user: ' + err);
+    });
 
+  }
+  niceDate(dateStr){
+   return moment(dateStr).tz('America/Chicago').format('MM/DD');
+  }
+  niceTime(dateStr){
+    return moment(dateStr).tz('America/Chicago').format('h:mm a');
+  }
   pickWinner(game,winner) {
     game.winner = winner;
   }
   save() {
-    console.log('games', $scope.games);
+    console.log('games', this._scope.games);
   }
 }
+export {PickAddEditController}
 
-// var week1 = [
-// {'home':'DEN','away':'CAR', 'date':'2016-09-09T00:30Z'},
-// {'home':'JAX','away':'GB', 'date':'2016-09-11T17:00Z'},
-// {'home':'BAL','away':'BUF', 'date':'2016-09-11T17:00Z'},
-// {'home':'HOU','away':'CHI', 'date':'2016-09-11T17:00Z'},
-// {'home':'PHI','away':'CLE', 'date':'2016-09-11T17:00Z'},
-// {'home':'ATL','away':'TB', 'date':'2016-09-11T17:00Z'},
-// {'home':'TEN','away':'MIN', 'date':'2016-09-11T17:00Z'},
-// {'home':'NYJ','away':'CIN', 'date':'2016-09-11T17:00Z'},
-// {'home':'NO','away':'OAK', 'date':'2016-09-11T17:00Z'},
-// {'home':'KC','away':'SD', 'date':'2016-09-11T17:00Z'},
-// {'home':'SEA','away':'MIA', 'date':'2016-09-11T20:05Z'},
-// {'home':'IND','away':'DET', 'date':'2016-09-11T20:25Z'},
-// {'home':'DAL','away':'NYG', 'date':'2016-09-11T20:25Z'},
-// {'home':'ARI','away':'NE', 'date':'2016-09-12T00:30Z'},
-// {'home':'WSH','away':'PIT', 'date':'2016-09-12T23:10Z'},
-// {'home':'SF','away':'LA', 'date':'2016-09-13T02:20Z'},
-// {'home':'JAX','away':'GB', 'date':'2016-09-11T17:00Z'},
-// {'home':'BAL','away':'BUF', 'date':'2016-09-11T17:00Z'},
-// {'home':'HOU','away':'CHI', 'date':'2016-09-11T17:00Z'},
-// {'home':'PHI','away':'CLE', 'date':'2016-09-11T17:00Z'},
-// {'home':'ATL','away':'TB', 'date':'2016-09-11T17:00Z'},
-// {'home':'TEN','away':'MIN', 'date':'2016-09-11T17:00Z'},
-// {'home':'NYJ','away':'CIN', 'date':'2016-09-11T17:00Z'},
-// {'home':'NO','away':'OAK', 'date':'2016-09-11T17:00Z'},
-// {'home':'KC','away':'SD', 'date':'2016-09-11T17:00Z'},
-// {'home':'SEA','away':'MIA', 'date':'2016-09-11T20:05Z'},
-// {'home':'IND','away':'DET', 'date':'2016-09-11T20:25Z'},
-// {'home':'DAL','away':'NYG', 'date':'2016-09-11T20:25Z'},
-// {'home':'ARI','away':'NE', 'date':'2016-09-12T00:30Z'},
-// {'home':'WSH','away':'PIT', 'date':'2016-09-12T23:10Z'},
-// {'home':'SF','away':'LA', 'date':'2016-09-13T02:20Z'},
-// {'home':'WSH','away':'PIT', 'date':'2016-09-12T23:10Z'},
-// {'home':'SF','away':'LA', 'date':'2016-09-13T02:20Z'}
-// ];
+// import { PageController } from './PageController';
+
+// class ProductPageController extends PageController {
+
+//     constructor() {
+//         super('ES6 inheritance with Angular');
+//     }
+// }
+
+// export { ProductPageController }
 
  // 	this.models = {
  //         selected: null,

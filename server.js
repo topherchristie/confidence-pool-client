@@ -134,6 +134,14 @@ app.use(function (ctx, next) {
 app.use(route.get('/api/me', function (ctx, next) {
   ctx.body = ctx.state.user;
 }));
+// app.use(route.get('/newUserCheck'), (ctx,next) => {
+//   if(cts.state.user.userSignedUp){
+//     ctx.redirect('/client');
+//   } else {
+//     console.log('redirecting to settings');
+//     ctx.redirect('/client#/settings');
+//   }
+// });
 
 // var _ = require('lodash');
 // function *saveUser(ctx, next){
@@ -203,6 +211,27 @@ app.use(route.post('/api/user', function () {
 
   return function (_x3, _x4) {
     return _ref2.apply(this, arguments);
+  };
+}()));
+
+app.use(route.get('/api/game/current', function () {
+  var _ref3 = _asyncToGenerator(regeneratorRuntime.mark(function _callee3(ctx, next) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            ctx.body = [{ 'home': 'DEN', 'away': 'CAR', 'date': '2016-09-09T00:30Z' }, { 'home': 'JAX', 'away': 'GB', 'date': '2016-09-11T17:00Z' }, { 'home': 'BAL', 'away': 'BUF', 'date': '2016-09-11T17:00Z' }, { 'home': 'HOU', 'away': 'CHI', 'date': '2016-09-11T17:00Z' }, { 'home': 'PHI', 'away': 'CLE', 'date': '2016-09-11T17:00Z' }, { 'home': 'ATL', 'away': 'TB', 'date': '2016-09-11T17:00Z' }, { 'home': 'TEN', 'away': 'MIN', 'date': '2016-09-11T17:00Z' }, { 'home': 'NYJ', 'away': 'CIN', 'date': '2016-09-11T17:00Z' }, { 'home': 'NO', 'away': 'OAK', 'date': '2016-09-11T17:00Z' }, { 'home': 'KC', 'away': 'SD', 'date': '2016-09-11T17:00Z' }, { 'home': 'SEA', 'away': 'MIA', 'date': '2016-09-11T20:05Z' }, { 'home': 'IND', 'away': 'DET', 'date': '2016-09-11T20:25Z' }, { 'home': 'DAL', 'away': 'NYG', 'date': '2016-09-11T20:25Z' }, { 'home': 'ARI', 'away': 'NE', 'date': '2016-09-12T00:30Z' }, { 'home': 'WSH', 'away': 'PIT', 'date': '2016-09-12T23:10Z' }, { 'home': 'SF', 'away': 'LA', 'date': '2016-09-13T02:20Z' }];
+
+          case 1:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, undefined);
+  }));
+
+  return function (_x5, _x6) {
+    return _ref3.apply(this, arguments);
   };
 }()));
 

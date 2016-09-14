@@ -1,12 +1,13 @@
 'use strict';
 
-//MainController.$inject = [];
-function MainController() {
-    var _this = this;
-    // _this.github = '';
-    // gh.getStatus().success(function(status) {
-    //     _this.github = status;
-    // });
+MainController.$inject = ['$scope','User'];
+function MainController($scope,User) {
+	$scope.me = {};
+    User.me(function(me){
+    	$scope.me = me;
+    }, function(err){
+    	alert('error x001: cannot get logged in user: ' + err);
+    });
 }
 
 module.exports = MainController;

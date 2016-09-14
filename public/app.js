@@ -1,17 +1,17 @@
  var angular = require('angular');
-// var angularBootstrap = require('angular-bootstrap');
-// var angularAnimate = require('angular-animate');
-// var angularTouch = require('angular-touch');
-// var momentTimezone = require('moment-timezone');
+var angularBootstrap = require('angular-bootstrap');
+var angularAnimate = require('angular-animate');
+var angularTouch = require('angular-touch');
+var momentTimezone = require('moment-timezone');
 // var dnd = require('angular-drag-and-drop-lists');
-// var moment = require('moment');
-// //const angularDragula = require('angular-dragula');
+var moment = require('moment');
+const angularDragula = require('angular-dragula');
 var ngRoute = require('angular-route');
 var ngResource = require('angular-resource');
 var ngCookies = require('angular-cookies');
 // console.log('ngRoute',ngRoute);
 // //var app = angular.module('app', ["ui.bootstrap", "ngRoute", angularDragula(angular)]);
- var app = angular.module('app', ['ngResource', 'ngRoute', ngCookies]);
+ var app = angular.module('app', ['ngResource', 'ngRoute',"ui.bootstrap", ngCookies, angularDragula(angular)]);
 
 // //var userService = require('./services/user-service');
 

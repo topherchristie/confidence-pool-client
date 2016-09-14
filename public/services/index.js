@@ -2,4 +2,7 @@
 
 var angular = require('angular');
 
-angular.module('app').service('User', require('./user-service'));
+angular.module('app')
+	.service('Game', require('./game-service'))
+	.service('User', require('./user-service'))
+;

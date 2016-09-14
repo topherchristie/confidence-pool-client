@@ -13,8 +13,10 @@
   "scripts": {
     "serve": "node server",
     "build:js": "webpack",
-    "build:server":"babel server.es6.js -o server.js",
-    "start": "npm run build:server && npm run build:js && npm run serve"
+    "build:server": "babel server.es6.js -o server.js",
+    "start:old": "npm run build:server && npm run build:js && npm run serve",
+    "start":  "concurrently \"npm run build-css\" \"npm run build:server\" \"npm run build:js\" && npm run serve",
+    "build-css": "node-sass --include-path public/styles public/styles/styles.scss   public/styles/styles.css"
   },
   "homepage": "https://github.com/rkusa/koa-passport-example",
   "dependencies": {
@@ -37,6 +39,7 @@
     "bluebird": "^3.4.6",
     "co": "^4.6.0",
     "co-monk": "^1.0.0",
+    "concurrently": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.1",
     "gulp-less": "^3.1.0",
