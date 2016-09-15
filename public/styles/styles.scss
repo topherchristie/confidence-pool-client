@@ -231,3 +231,40 @@ body {
 	    }
 	}
 }
+
+
+////////SETTINGS
+.settings form > div {
+	position: relative;
+	& > label {
+		position: absolute;
+		left:0;
+		font-size:1em;
+	}
+		}
+	input:focus + label,
+	input:placeholder-shown label {
+		
+
+		top:0;
+		font-size:.25em;
+		
+		
+	}
+}
+
+.settings form input::-webkit-input-placeholder {
+   color: red;
+}
+
+.settings form input:-moz-placeholder { /* Firefox 18- */
+   color: red;  
+}
+
+.settings form input::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  
+}
+
+.settings form input:-ms-input-placeholder {  
+   color: red;  
+}

@@ -1,19 +1,27 @@
-<h2>user Settings last updated on {{vm.user.updatedDate}}</h2>
-<form name="settingsForm">
-<div>
-User Name : <input type="text" maxlength="100" ng-model="vm.user.username" require="true"/>
-</div>
-<div>
-Display Name : <input type="text" maxlength="100" ng-model="vm.user.displayName" require="true"/>
-</div>
-<div>
-Email : <input type="text" maxlength="100" ng-model="vm.user.email" require="true"/>
-</div>
-<div>
-Email Updates : <input type="checkbox" ng-model="vm.user.emailUpdates" />
-</div>
-<div>
-<input type="button" class="btn btn-xs btn-primary" name="save" value="Save" ng-click="vm.save()" />
-<input type="button" class="btn btn-xs btn-default" name="save" value="Cancel" ng-click="vm.cancel()" />
-</div>
-</form>
+
+<section class="settings">
+	<header>
+		<h2>user Settings last updated on {{vm.user.updatedDate}}</h2>
+	</header>
+
+	<div class="container">
+		<form name="settingsForm">
+			<div class="row">
+				<input type="text" maxlength="100" ng-model="vm.user.username" require="true" name="username" placeholder="Username"/><label for="username">Username</label>
+			</div>
+			<div class="row">
+				<input type="text" maxlength="100" ng-model="vm.user.displayName" require="true" name="displayName" placeholder="Display Name"/><label for="displayName">Display Name</label>
+			</div>
+			<div class="row">
+				<input type="text" maxlength="100" ng-model="vm.user.email" require="true" name="email" placeholder="Email"/><label for="email">Email</label>
+			</div>
+			<div class="row">
+				<label><input type="checkbox" ng-model="vm.user.emailUpdates" />Receive Email Updates</label>
+			</div>
+			<div class="row">
+				<input type="button" class="btn btn-xs btn-default pull-left" name="save" value="Cancel" ng-click="vm.cancel()" />
+				<input type="button" class="btn btn-xs btn-primary pull-right" name="save" value="Save" ng-click="vm.save()" />
+			</div>
+		</form>
+	</div>
+</section>

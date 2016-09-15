@@ -26,7 +26,6 @@ body {
 
 .panel .ng-scope {
   margin: 0 0 13px; }
-
 .panel .gu-transit {
   /*---DROPZONE---*/
   background: #CDCDCD;
@@ -141,3 +140,19 @@ body {
       font-weight: 600;
       top: -.104em;
       position: relative; }
+
+.settings form input::-webkit-input-placeholder {
+  color: red; }
+
+.settings form input:-moz-placeholder {
+  /* Firefox 18- */
+  color: red; }
+
+.settings form input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: red; }
+
+.settings form input:-ms-input-placeholder {
+  color: red; }
+
+/*# sourceMappingURL=styles.css.map */
