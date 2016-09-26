@@ -1,7 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-html, body {
-  font-size: 100%; }
-
 body {
   font-family: 'Roboto';
   font-weight: 300;
@@ -11,43 +8,20 @@ footer {
   height: 50px;
   position: fixed;
   bottom: 0;
+  width: 100%;
   background: #FFF;
-  width: 100%; }
-  footer nav {
-    font-size: 0.625em;
-    padding-top: 8px;
-    /* Background: */
-    background: rgba(249, 249, 249, 0.9);
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1); }
-    footer nav a:hover {
-      text-decoration: none; }
-    footer nav .fa {
-      font-size: 2em; }
+  border-top: 1px solid #f7f7f7; }
 
 .panel {
-  background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%);
-  padding-top: 44px;
-  padding-bottom: 50px; }
+  background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%); }
   .panel .panel-heading {
     text-align: center;
-    background: #FFF;
-    height: 44px;
-    position: fixed;
-    top: 0;
+    background: #FFF; }
+  .panel .panel-body {
     width: 100%;
-    z-index: 99; }
-
-.panel-picks .panel-body, .panel-info .panel-body {
-  width: 100%;
-  max-width: 244px;
-  padding: 13px 0px 55px;
-  margin: 0 auto; }
-
-.panel-title {
-  display: inline;
-  text-transform: uppercase;
-  color: #000;
-  font-size: 17px; }
+    max-width: 244px;
+    padding: 13px 0px 55px;
+    margin: 0 auto; }
 
 .pick-container, .panel .ng-scope, .panel .gu-transit, .gu-mirror {
   /*height:42px;*/
@@ -175,4 +149,18 @@ footer {
       top: -.104em;
       position: relative; }
 
-/*# sourceMappingURL=styles.css.map */
+.settings form input::-webkit-input-placeholder {
+  color: red; }
+
+.settings form input:-moz-placeholder {
+  /* Firefox 18- */
+  color: red; }
+
+.settings form input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: red; }
+
+.settings form input:-ms-input-placeholder {
+  color: red; }
+
+/*# sourceMappingURL=stylesbackup.css.map */

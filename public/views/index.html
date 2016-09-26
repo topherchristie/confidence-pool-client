@@ -5,7 +5,9 @@
 	<title>Confidence Pool</title>
 	<link href="/public/styles/bootstrap.min.css" rel=stylesheet>
 	<link href="/public/styles/bootstrap-theme.min.css" rel=stylesheet>
+  <link href="/public/styles/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
   <link href="/public/styles/styles.css" rel=stylesheet>
+
 	<style type="text/css">
   
 .gu-mirror {
@@ -96,15 +98,30 @@
     color: #3c763d;
 }
 </style>
+
+
 </head>
 <body ng-app="app">
-	<div ng-controller="MainController" class="simpleDemo">
-      <a href="/logout" target="self" class="btn btn-primary">Logout</a>
-      <a href="#/settings" class="btn btn-primary">Settings</a>
-      <a href="#/dashboard" class="btn btn-primary">Dashboard</a>
-      <a href="#/leaderboard" class="btn btn-primary">Leaderboard</a>
-      <h3>{{me.displayName}}</h3>
-       <div ng-view></div>
+	<div ng-controller="MainController" class="">
+    <div ng-view></div>
+    <footer>
+      <nav class"col-xs-12 navbar-fixed-bottom">
+      <!--<a href="/logout" target="self" class="btn btn-primary">Logout</a>-->
+      
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-3 text-center"><a href="#/settings" class=""><i class="fa fa-wrench" aria-hidden="true"></i><br />Settings</a></div>
+              <div class="col-xs-3 text-center"><a href="#/dashboard" class=""><i class="fa fa-tags" aria-hidden="true"></i><br />Picks</a></div>
+              <div class="col-xs-3 text-center"><a href="#/leaderboard" class=""><i class="fa fa-users" aria-hidden="true"></i><br />Standings</a></div>
+              <div class="col-xs-3 text-center"><a href="#/stats" class=""><i class="fa fa-area-chart" aria-hidden="true"></i><br />Stats</a></div>
+            </div>
+          </div>
+      
+     
+      <h3 style="position:absolute;top:0;right:0;font-size:.5em;">{{me.displayName}}</h3>
+    </nav>
+    </footer>
+      
     </div>
 	<script src="/public/dist/bundle.js" ></script>
 </body>

@@ -51,7 +51,6 @@ $darkgray:#989898;
 
 
 
-html, body { font-size: 100%; }
 
 
 
@@ -59,8 +58,6 @@ body {
 	font-family: 'Roboto';
 	font-weight: 300;
 	color:#6B6B6B;
-
-
 }
 
 
@@ -68,57 +65,28 @@ footer {
 	 height:50px;
 	 position:fixed;
 	 bottom:0;
+	 width: 100%;
 	 background: #FFF;
-	 width: 100%;	 
-	 
-	 nav {
-	 	font-size: 0.625em;
-	 	padding-top:8px;
-	 	/* Background: */
-		background: rgba(249,249,249,0.90);
-		box-shadow: 0px -1px 0px 0px rgba(0,0,0,0.10);
-	 	a:hover {
-	 		text-decoration: none;
-	 	}
-	 	.fa {
-	 		font-size:2em;
-	 	}
-
-	 }
-
+	 border-top:1px solid #f7f7f7;
 }
 .panel {
 	background-image: linear-gradient(-180deg, #EAEAEA 0%, #C7C7C7 100%);
-	padding-top:44px;
-	padding-bottom:50px;
 	.panel-heading {
 		text-align: center;
 		background:#FFF;
-		height:44px;
-		position:fixed;
-		top:0;
-		width:100%;
-		z-index:99;
 
 
 	}
-	
-}
-.panel-picks, .panel-info {
 	.panel-body {
 		width: 100%;
 		max-width: 244px;
 		padding:13px 0px 55px;
 		margin:0 auto;
-	}
 
+
+	}
 }
-.panel-title {
-	display: inline;
-	text-transform: uppercase;
-	color:#000;
-	font-size:17px;
-}
+
 
 
 .pick-container {
@@ -278,4 +246,18 @@ footer {
 ////////SETTINGS
 
 
+.settings form input::-webkit-input-placeholder {
+   color: red;
+}
 
+.settings form input:-moz-placeholder { /* Firefox 18- */
+   color: red;  
+}
+
+.settings form input::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  
+}
+
+.settings form input:-ms-input-placeholder {  
+   color: red;  
+}
