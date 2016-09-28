@@ -4,27 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confidence Pool</title>
+  <link href="/public/styles/bootstrap.min.css" rel=stylesheet>
+  <link href="/public/styles/bootstrap-theme.min.css" rel=stylesheet>
+  <link href="/public/styles/font-awesome/css/font-awesome.min.css" rel="stylesheet" >
+  <link href="/public/styles/styles.css" rel=stylesheet>
+
+  
 </head>
 <body>
-  <form action="/login" method="post">
-    token:{{csrfToken}}
-   <!--  <input type="hidden" name="_csrf" value="{csrfToken}"/>
-    <p>
-      <label>Username:
-        <input type="text" name="username" value="test" />
-      </label>
-    </p>
-    <p>
-      <label>Password:
-        <input type="password" name="password" value="test" />
-      </label>
-    </p>
-    <p>
-      <button type="submit">Log In</button>
-    </p> -->
-    <p>
-      <a href="/auth/facebook">Sign in with Facebook</a> <a href="/auth/twitter">Sign in with Twitter</a> <a href="/auth/google">Sign in with Google</a>
-    </p>
-  </form>
+  <div class="panel panel-login">
+    <div class="panel-heading">
+      <div class="container">
+        <div class="row">
+          
+          <h3 class="panel-title">Confidence Pool</h3>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="container">
+        <form action="/login" method="post">
+          token:{{csrfToken}}
+         <!--  <input type="hidden" name="_csrf" value="{csrfToken}"/>
+          <p>
+            <label>Username:
+              <input type="text" name="username" value="test" />
+            </label>
+          </p>
+          <p>
+            <label>Password:
+              <input type="password" name="password" value="test" />
+            </label>
+          </p>
+          <p>
+            <button type="submit">Log In</button>
+          </p> -->
+          
+            <a href="/auth/facebook" class="btn btn-lg row">
+              <div class="col-xs-2"><i class="fa fa-facebook-square" aria-hidden="true"></i></div>
+              <div class="col-xs-10">Sign in with Facebook</div>
+            </a>
+            <a href="/auth/twitter" class="btn btn-lg row">
+              <div class="col-xs-2"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+              <div class="col-xs-10">Sign in with Twitter</div>
+            </a>
+            <a href="/auth/google" class="btn btn-lg row">
+              <div class="col-xs-2"><i class="fa fa-google" aria-hidden="true"></i></div>
+              <div class="col-xs-10">Sign in with Google</div>
+            </a>
+          
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
