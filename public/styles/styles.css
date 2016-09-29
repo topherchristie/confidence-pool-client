@@ -36,6 +36,12 @@ footer {
     top: 0;
     width: 100%;
     z-index: 99; }
+    .panel .panel-heading .pull-right {
+      position: absolute;
+      right: 10px; }
+    .panel .panel-heading .pull-left {
+      position: absolute;
+      left: 10px; }
 
 .panel-picks .panel-body, .panel-info .panel-body {
   width: 100%;
